@@ -8,7 +8,7 @@ defmodule DogStat.Mixfile do
      description: "Runtime-configurable Elixir client for StatsD servers.",
      package: package(),
      version: @version,
-     elixir: "~> 1.4",
+     elixir: "~> 1.4 or ~> 1.3.2",
      elixirc_paths: elixirc_paths(Mix.env),
      compilers: [] ++ Mix.compilers,
      build_embedded: Mix.env == :prod,
