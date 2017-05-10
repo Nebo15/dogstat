@@ -38,14 +38,14 @@ defmodule DogStatTest do
 
     assert [
       %{
-        header: [[1, 31, 189, 127, 0, 0, 1] | ""],
+        header: [_ | ""],
         key: "sample",
         options: [tags: ["foo", "bar"]],
         type: :counter,
         value: "-1"
       },
       %{
-        header: [[1, 31, 189, 127, 0, 0, 1] | ""],
+        header: [_ | ""],
         key: "sample",
         options: [tags: ["foo", "bar"]],
         type: :counter,
