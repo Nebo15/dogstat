@@ -10,41 +10,41 @@ The package can be installed as:
 
   1. Add `dogstat` to your list of dependencies in `mix.exs`:
 
-    ```elixir
-    def deps do
-      [{:dogstat, "~> 0.1.0"}]
-    end
-    ```
+  ```elixir
+  def deps do
+    [{:dogstat, "~> 0.1.0"}]
+  end
+  ```
 
   2. Ensure `dogstat` is started before your application:
 
-    ```elixir
-    def application do
-      [applications: [:dogstat]]
-    end
-    ```
+  ```elixir
+  def application do
+    [applications: [:dogstat]]
+  end
+  ```
 
   3. Add it to your supervision tree:
 
-    ```elixir
-    def start(_type, _args) do
-      import Supervisor.Spec, warn: false
+  ```elixir
+  def start(_type, _args) do
+    import Supervisor.Spec, warn: false
 
-      config = [
-        host: "localhost",
-        port: 8125
-      ]
+    config = [
+      host: "localhost",
+      port: 8125
+    ]
 
-      children = [
-        ...
-        worker(Annon.Monitoring.MetricsCollector, [config]),
-        ...
-      ]
+    children = [
+      ...
+      worker(Annon.Monitoring.MetricsCollector, [config]),
+      ...
+    ]
 
-      opts = [strategy: :one_for_one, name: Annon.Supervisor]
-      Supervisor.start_link(children, opts)
-    end
-    ```
+    opts = [strategy: :one_for_one, name: Annon.Supervisor]
+    Supervisor.start_link(children, opts)
+  end
+  ```
 
 ## Docs
 
