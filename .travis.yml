@@ -1,0 +1,22 @@
+language: elixir
+cache:
+  directories:
+    - deps
+services:
+elixir:
+  - 1.4.2
+otp_release:
+  - 19.3
+env:
+  global:
+    - MIX_ENV=test
+before_install:
+script:
+  # Run all tests except pending ones
+  - mix test --exclude pending --trace
+  # Submit code coverage report to Coveralls
+  - mix coveralls.travis --exclude pending
+  # Run static code analysis
+  - mix credo --strict
+  # Check code style
+  - mix dogma
