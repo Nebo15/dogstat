@@ -182,7 +182,6 @@ defmodule DogStat do
     result
   end
 
-
   @doc false
   def transmit(type, key, val, options) when (is_binary(key) or is_list(key)) and is_list(options) do
     sample_rate = Keyword.get(options, :sample_rate)
