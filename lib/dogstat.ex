@@ -21,9 +21,11 @@ defmodule DogStat do
     * `namespace` - will be used as prefix to collected metrics;
     * `send_tags?` - allows to disable tags for StatsD servers that don't support them;
     * `sink` - if set to list, all metrics will be stored in a process state, useful for testing;
+    * `name` - worker process name.
   """
   def start_link(opts) do
-    GenServer.start_link(__MODULE__, opts, name: __MODULE__)
+    name = Keyword.get(opts, :name, __MODULE__)
+    GenServer.start_link(__MODULE__, opts, name: name)
   end
 
   @doc false
